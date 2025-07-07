@@ -49,7 +49,7 @@ const ShitParticleBackground = () => {
         },
         particles: {
           color: {
-            value: "#000000", // Emojis are colored, but this might affect some properties
+            value: "#FFFFFF", // Mengubah warna partikel menjadi putih
           },
           links: {
             enable: false, // No lines between particles
@@ -72,7 +72,7 @@ const ShitParticleBackground = () => {
             value: 30, // Number of particles
           },
           opacity: {
-            value: 0.8,
+            value: 1, // Meningkatkan opasitas menjadi penuh
           },
           shape: {
             type: "character",
@@ -84,7 +84,7 @@ const ShitParticleBackground = () => {
             },
           },
           size: {
-            value: { min: 16, max: 32 }, // Size of the emojis
+            value: { min: 20, max: 40 }, // Meningkatkan ukuran emoji
           },
         },
         detectRetina: true,
