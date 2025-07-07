@@ -10,7 +10,7 @@ const ShitParticleBackground = () => {
   }, []);
 
   const particlesLoaded = useCallback(async (container: any) => {
-    // console.log(container);
+    console.log("Particles container loaded:", container); // Tambahkan log ini
   }, []);
 
   return (
@@ -61,7 +61,7 @@ const ShitParticleBackground = () => {
               default: "out", // Partikel akan keluar dari layar setelah mencapai batas bawah
             },
             random: false, // Gerakan tidak acak
-            speed: 2, // Meningkatkan kecepatan sedikit
+            speed: 3, // Meningkatkan kecepatan sedikit
             straight: true, // Gerakan lurus ke bawah
           },
           number: {
@@ -69,22 +69,22 @@ const ShitParticleBackground = () => {
               enable: true,
               area: 800,
             },
-            value: 30, // Number of particles
+            value: 50, // Meningkatkan jumlah partikel
           },
           opacity: {
             value: 1, // Meningkatkan opasitas menjadi penuh
           },
           shape: {
-            type: "character",
-            character: {
-              value: ["💩"], // The emoji!
-              font: "Verdana", // A common font that supports emojis
-              style: "",
-              weight: "400",
-            },
+            type: "circle", // Mengubah bentuk menjadi lingkaran untuk debugging
+            // character: { // Komentar ini untuk sementara
+            //   value: ["💩"],
+            //   font: "Verdana",
+            //   style: "",
+            //   weight: "400",
+            // },
           },
           size: {
-            value: { min: 20, max: 40 }, // Meningkatkan ukuran emoji
+            value: { min: 10, max: 20 }, // Mengatur ukuran lingkaran
           },
         },
         detectRetina: true,
