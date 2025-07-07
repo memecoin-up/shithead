@@ -4,6 +4,23 @@ import websiteContent from "../../data/website-content.json";
 export default function Home() {
   const { sections } = websiteContent.website;
 
+  // Filter out "READ OUR SHITPAPER" and "Join Reddit" buttons
+  const filteredCtaButtons = sections.hero.ctaButtons.filter(
+    (button: any) =>
+      button.text !== "READ OUR SHITPAPER" && button.text !== "Join Reddit"
+  );
+
+  // Update social links
+  const updatedSocials = sections.community.socials.map((social: any) => {
+    if (social.platform === "Telegram") {
+      return { ...social, link: "https://t.me/goldenshitheads" };
+    }
+    if (social.platform === "Twitter") {
+      return { ...social, link: "https://x.com/shithead_1111" };
+    }
+    return social;
+  });
+
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)] bg-background text-foreground">
       <main className="flex flex-col items-center justify-center">
@@ -19,7 +36,7 @@ export default function Home() {
             {sections.hero.paragraph}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {sections.hero.ctaButtons.map((button, index) => (
+            {filteredCtaButtons.map((button: any, index: number) => (
               <a
                 key={index}
                 href={button.link}
@@ -44,7 +61,7 @@ export default function Home() {
             {sections.philosophy.paragraph}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {sections.philosophy.points.map((point, index) => (
+            {sections.philosophy.points.map((point: any, index: number) => (
               <div key={index} className="bg-popover p-6 rounded-lg shadow-md text-center">
                 <h3 className="text-2xl font-semibold mb-3 text-primary">
                   {point.title}
@@ -61,7 +78,7 @@ export default function Home() {
             {sections.shitonomics.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12">
-            {sections.shitonomics.stats.map((stat, index) => (
+            {sections.shitonomics.stats.map((stat: any, index: number) => (
               <div key={index} className="bg-card p-6 rounded-lg shadow-md">
                 <p className="text-sm text-muted-foreground">{stat.label}</p>
                 <h3 className="text-3xl font-bold text-primary mb-2">
@@ -82,7 +99,7 @@ export default function Home() {
             {sections.shitmap.title}
           </h2>
           <div className="max-w-5xl mx-auto space-y-12">
-            {sections.shitmap.phases.map((phase, index) => (
+            {sections.shitmap.phases.map((phase: any, index: number) => (
               <div key={index} className="relative pl-8 md:pl-16">
                 <div className="absolute left-0 top-0 h-full w-1 bg-primary rounded-full"></div>
                 <div className="absolute left-[-10px] md:left-[-14px] top-0 w-6 h-6 md:w-8 md:h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm md:text-base">
@@ -92,7 +109,7 @@ export default function Home() {
                   {phase.title}
                 </h3>
                 <ul className="list-disc list-inside space-y-2 text-lg text-muted-foreground">
-                  {phase.tasks.map((task, taskIndex) => (
+                  {phase.tasks.map((task: any, taskIndex: number) => (
                     <li key={taskIndex}>{task}</li>
                   ))}
                 </ul>
@@ -107,7 +124,7 @@ export default function Home() {
             {sections.howToBuy.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12">
-            {sections.howToBuy.steps.map((step, index) => (
+            {sections.howToBuy.steps.map((step: any, index: number) => (
               <div key={index} className="bg-card p-6 rounded-lg shadow-md">
                 <div className="text-5xl font-bold text-primary mb-4">
                   {step.step}
@@ -139,7 +156,7 @@ export default function Home() {
             {sections.community.paragraph}
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            {sections.community.socials.map((social, index) => (
+            {updatedSocials.map((social: any, index: number) => (
               <a
                 key={index}
                 href={social.link}

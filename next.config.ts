@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   },
   // Add basePath for GitHub Pages deployment
   // Replace 'YOUR_REPOSITORY_NAME' with the actual name of your GitHub repository
-  basePath: process.env.NODE_ENV === 'production' ? '/YOUR_REPOSITORY_NAME' : '',
+  basePath: process.env.NODE_ENV === "production" ? "/shithead" : "",
   webpack: (config) => {
     if (process.env.NODE_ENV === "development") {
       config.module.rules.push({
