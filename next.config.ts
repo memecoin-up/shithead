@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Add basePath for GitHub Pages deployment
-  // Replace 'YOUR_REPOSITORY_NAME' with the actual name of your GitHub repository
+  // Add basePath and assetPrefix for GitHub Pages deployment
   basePath: process.env.NODE_ENV === "production" ? "/shithead" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/shithead" : "",
   webpack: (config) => {
     if (process.env.NODE_ENV === "development") {
       config.module.rules.push({
