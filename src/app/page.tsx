@@ -4,22 +4,24 @@ import websiteContent from "../../data/website-content.json";
 export default function Home() {
   const { sections } = websiteContent.website;
 
-  // Filter out "READ OUR SHITPAPER" and "Join Reddit" buttons
+  // Filter out "READ OUR SHITPAPER" and "Join Reddit" buttons from Hero section
   const filteredCtaButtons = sections.hero.ctaButtons.filter(
     (button: any) =>
       button.text !== "READ OUR SHITPAPER" && button.text !== "Join Reddit"
   );
 
-  // Update social links
-  const updatedSocials = sections.community.socials.map((social: any) => {
-    if (social.platform === "Telegram") {
-      return { ...social, link: "https://t.me/goldenshitheads" };
-    }
-    if (social.platform === "Twitter") {
-      return { ...social, link: "https://x.com/shithead_1111" };
-    }
-    return social;
-  });
+  // Update social links and filter out Reddit
+  const updatedSocials = sections.community.socials
+    .filter((social: any) => social.platform !== "Reddit") // Filter out Reddit platform
+    .map((social: any) => {
+      if (social.platform === "Telegram") {
+        return { ...social, link: "https://t.me/goldenshitheads" };
+      }
+      if (social.platform === "Twitter") {
+        return { ...social, link: "https://x.com/shithead_1111" };
+      }
+      return social;
+    });
 
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)] bg-background text-foreground">
