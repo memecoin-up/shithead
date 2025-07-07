@@ -1,5 +1,6 @@
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import websiteContent from "../../data/website-content.json";
+import Image from "next/image"; // Import Image component
 
 export default function Home() {
   const { sections } = websiteContent.website;
@@ -28,6 +29,16 @@ export default function Home() {
       <main className="flex flex-col items-center justify-center">
         {/* Hero Section */}
         <section id="hero" className="w-full py-20 px-4 text-center">
+          {/* Shithead Image */}
+          <div className="mb-8 flex justify-center">
+            <Image
+              src="/shithead.png" // Path to your image in the public folder
+              alt="Shithead Meme"
+              width={250} // Set a base width
+              height={250} // Set a base height to maintain 1:1 ratio
+              className="rounded-full object-cover aspect-square" // Ensure 1:1 aspect ratio and rounded shape
+            />
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
             {sections.hero.mainHeadline}
           </h1>
