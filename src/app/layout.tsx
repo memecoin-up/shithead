@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ShitParticleBackground from "@/components/ShitParticleBackground";
+import SimpleParticles from "@/components/SimpleParticles";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,10 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen`}
       >
-        <ShitParticleBackground />
-        <div className="relative z-10">
-          {children}
-        </div>
+        <SimpleParticles />
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );

@@ -1,95 +1,163 @@
 "use client";
 
-import React, { useCallback } from "react";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim"; // loads tsparticles-slim
+import React, { useEffect, useRef, useState } from "react";
+
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedY: number;
+  speedX: number;
+  rotation: number;
+  rotationSpeed: number;
+}
 
 const ShitParticleBackground = () => {
-  const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const animationRef = useRef<number | undefined>(undefined);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Add a small delay to ensure component is mounted
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
-  const particlesLoaded = useCallback(async (container: any) => {
-    console.log("Particles container loaded:", container); // Tetap log ini
-  }, []);
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      console.log("Canvas not found");
+      return;
+    }
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      console.log("Canvas context not found");
+      return;
+    }
+
+    console.log("Initializing particles...");
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      console.log(`Canvas resized to: ${canvas.width}x${canvas.height}`);
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // Initialize particles
+    const initParticles = () => {
+      particlesRef.current = [];
+      const particleCount = 30; // Fixed number for testing
+
+      console.log(`Creating ${particleCount} particles`);
+
+      for (let i = 0; i < particleCount; i++) {
+        particlesRef.current.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 15 + 20,
+          speedY: Math.random() * 1 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 2,
+        });
+      }
+
+      console.log("Particles created:", particlesRef.current.length);
+    };
+
+    // Animation loop
+    const animate = () => {
+      // Clear canvas with semi-transparent background for trail effect
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Clear completely (no trail)
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particlesRef.current.forEach((particle) => {
+        // Update position
+        particle.y += particle.speedY;
+        particle.x += particle.speedX;
+        particle.rotation += particle.rotationSpeed;
+
+        // Reset particle if it goes off screen
+        if (particle.y > canvas.height + particle.size) {
+          particle.y = -particle.size;
+          particle.x = Math.random() * canvas.width;
+        }
+
+        // Keep particles within horizontal bounds
+        if (particle.x < 0 || particle.x > canvas.width) {
+          particle.speedX *= -1;
+        }
+
+        // Save context for rotation
+        ctx.save();
+        ctx.translate(particle.x, particle.y);
+        ctx.rotate((particle.rotation * Math.PI) / 180);
+
+        // Draw emoji
+        ctx.font = `${particle.size}px Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("💩", 0, 0);
+
+        // Restore context
+        ctx.restore();
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    initParticles();
+    animate();
+
+    return () => {
+      console.log("Cleaning up particles");
+      window.removeEventListener("resize", resizeCanvas);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  if (!isVisible) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          backgroundColor: "transparent",
+        }}
+      />
+    );
+  }
 
   return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
-      options={{
-        background: {
-          color: {
-            value: "#FF0000", // SEMENTARA: Mengubah latar belakang kanvas menjadi merah untuk debugging
-          },
-        },
-        fpsLimit: 60,
-        interactivity: {
-          events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-            resize: true,
-          },
-          modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 100,
-              duration: 0.4,
-            },
-          },
-        },
-        particles: {
-          color: {
-            value: "#FFFFFF", // Warna partikel (emoji)
-          },
-          links: {
-            enable: false, // No lines between particles
-          },
-          move: {
-            direction: "bottom", // Gerakan dari atas ke bawah
-            enable: true,
-            outModes: {
-              default: "out", // Partikel akan keluar dari layar
-            },
-            random: false, // Gerakan lurus
-            speed: 5, // Meningkatkan kecepatan
-            straight: true, // Gerakan lurus ke bawah
-          },
-          number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 100, // Meningkatkan jumlah partikel secara drastis
-          },
-          opacity: {
-            value: 1, // Opasitas penuh
-          },
-          shape: {
-            type: "character",
-            character: {
-              value: ["💩"], // Emoji kotoran
-              font: "Verdana", // Font umum yang mendukung emoji
-              style: "",
-              weight: "400",
-            },
-          },
-          size: {
-            value: { min: 30, max: 60 }, // Meningkatkan ukuran emoji secara drastis
-          },
-        },
-        detectRetina: true,
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 0,
+        pointerEvents: "none",
+        backgroundColor: "transparent",
       }}
-      className="absolute inset-0 z-0" // Posisi absolut, di belakang konten
     />
   );
 };
