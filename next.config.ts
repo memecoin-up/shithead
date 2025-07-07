@@ -1,12 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Use export only for GitHub Pages, not for Vercel
+  output: process.env.VERCEL ? undefined : "export",
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    unoptimized: process.env.VERCEL ? false : true,
   },
-  // Add basePath and assetPrefix for GitHub Pages deployment
+  // Add basePath and assetPrefix for GitHub Pages deployment only
   basePath: "",
   assetPrefix: "",
   webpack: (config) => {
