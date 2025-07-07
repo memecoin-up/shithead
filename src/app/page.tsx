@@ -1,10 +1,164 @@
 import { MadeWithDyad } from "@/components/made-with-dyad";
+import websiteContent from "../../data/website-content.json";
 
 export default function Home() {
+  const { sections } = websiteContent.website;
+
   return (
-    <div className="grid grid-rows-[1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-1 items-center sm:items-start">
-        <h1>Blank page</h1>
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)] bg-background text-foreground">
+      <main className="flex flex-col items-center justify-center">
+        {/* Hero Section */}
+        <section id="hero" className="w-full py-20 px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+            {sections.hero.mainHeadline}
+          </h1>
+          <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-muted-foreground">
+            {sections.hero.subHeadline}
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg md:text-xl mb-8 text-muted-foreground">
+            {sections.hero.paragraph}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            {sections.hero.ctaButtons.map((button, index) => (
+              <a
+                key={index}
+                href={button.link}
+                className={`px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 ${
+                  button.primary
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
+              >
+                {button.text}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Philosophy Section */}
+        <section id="philosophy" className="w-full py-20 px-4 bg-card text-card-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+            {sections.philosophy.title}
+          </h2>
+          <p className="max-w-4xl mx-auto text-lg md:text-xl text-center mb-12 text-muted-foreground">
+            {sections.philosophy.paragraph}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {sections.philosophy.points.map((point, index) => (
+              <div key={index} className="bg-popover p-6 rounded-lg shadow-md text-center">
+                <h3 className="text-2xl font-semibold mb-3 text-primary">
+                  {point.title}
+                </h3>
+                <p className="text-muted-foreground">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Shitonomics Section */}
+        <section id="shitonomics" className="w-full py-20 px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">
+            {sections.shitonomics.title}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12">
+            {sections.shitonomics.stats.map((stat, index) => (
+              <div key={index} className="bg-card p-6 rounded-lg shadow-md">
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <h3 className="text-3xl font-bold text-primary mb-2">
+                  {stat.value}
+                </h3>
+                <p className="text-muted-foreground">{stat.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-2xl md:text-3xl font-semibold text-accent-foreground">
+            {sections.shitonomics.slogan}
+          </p>
+        </section>
+
+        {/* Shitmap Section */}
+        <section id="shitmap" className="w-full py-20 px-4 bg-card text-card-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+            {sections.shitmap.title}
+          </h2>
+          <div className="max-w-5xl mx-auto space-y-12">
+            {sections.shitmap.phases.map((phase, index) => (
+              <div key={index} className="relative pl-8 md:pl-16">
+                <div className="absolute left-0 top-0 h-full w-1 bg-primary rounded-full"></div>
+                <div className="absolute left-[-10px] md:left-[-14px] top-0 w-6 h-6 md:w-8 md:h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm md:text-base">
+                  {phase.phaseNumber}
+                </div>
+                <h3 className="text-3xl font-bold mb-4 text-primary">
+                  {phase.title}
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-lg text-muted-foreground">
+                  {phase.tasks.map((task, taskIndex) => (
+                    <li key={taskIndex}>{task}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* How To Buy Section */}
+        <section id="how-to-buy" className="w-full py-20 px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">
+            {sections.howToBuy.title}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12">
+            {sections.howToBuy.steps.map((step, index) => (
+              <div key={index} className="bg-card p-6 rounded-lg shadow-md">
+                <div className="text-5xl font-bold text-primary mb-4">
+                  {step.step}
+                </div>
+                <h3 className="text-2xl font-semibold mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground">{step.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-muted p-6 rounded-lg max-w-2xl mx-auto mb-8">
+            <p className="text-lg font-semibold mb-2">Contract Address:</p>
+            <code className="block bg-input p-3 rounded-md text-lg break-all">
+              {sections.howToBuy.contractAddress}
+            </code>
+          </div>
+          <p className="text-xl md:text-2xl font-medium text-muted-foreground">
+            {sections.howToBuy.closingText}
+          </p>
+        </section>
+
+        {/* Community Section */}
+        <section id="community" className="w-full py-20 px-4 bg-card text-card-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+            {sections.community.title}
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-center mb-12 text-muted-foreground">
+            {sections.community.paragraph}
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {sections.community.socials.map((social, index) => (
+              <a
+                key={index}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-lg font-semibold hover:bg-primary/90 transition-colors duration-200"
+              >
+                Join {social.platform}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer Section */}
+        <footer className="w-full py-10 px-4 text-center bg-popover text-popover-foreground text-sm">
+          <p className="max-w-4xl mx-auto text-muted-foreground">
+            {sections.footer.disclaimer}
+          </p>
+        </footer>
       </main>
       <MadeWithDyad />
     </div>

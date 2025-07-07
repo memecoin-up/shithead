@@ -1,0 +1,167 @@
+{
+  "website": {
+    "coinName": "ShitHead",
+    "ticker": "$SHEAD",
+    "lang": "en",
+    "sections": {
+      "hero": {
+        "mainHeadline": "STOP PRETENDING YOU'RE A GENIUS.",
+        "subHeadline": "It's Time to Embrace Your Destiny. Welcome to ShitHead.",
+        "paragraph": "In the world of crypto, everyone's a genius. Technical analysts, on-chain wizards, Web3 visionaries. But we all know the truth. Deep down, inside our skulls... is just a pile of shit ideas. $SHEAD is the first coin that celebrates this raw honesty. This isn't a coin for geniuses. This is a coin for us. The ShitHeads.",
+        "ctaButtons": [
+          {
+            "text": "BUY $SHEAD NOW",
+            "link": "#how-to-buy",
+            "primary": true
+          },
+          {
+            "text": "JOIN OUR TELEGRAM",
+            "link": "https://telegram.org/your_group_link",
+            "primary": false
+          },
+          {
+            "text": "READ OUR SHITPAPER",
+            "link": "/shitpaper.pdf",
+            "primary": false
+          }
+        ]
+      },
+      "philosophy": {
+        "title": "OUR SHIT-LOSOPHY",
+        "paragraph": "Tired of 'revolutionary' projects that end up being a rugpull? Sick of hundred-page roadmaps that go nowhere? So are we.\n\nShitHead ($SHEAD) was born from brutal honesty: most of our investment decisions are based on gut feelings, FOMO, and pure dumb luck. We don't offer 'future utility' or 'disruptive blockchain solutions.' We offer one thing: a community where you can be yourself—a degen who is proud of their stupid decisions.",
+        "points": [
+          {
+            "title": "Radical Honesty",
+            "description": "We know this is a bad idea. You know this is a bad idea. That's the whole point."
+          },
+          {
+            "title": "Community Power",
+            "description": "A single ShitHead might be weak, but thousands of ShitHeads united can move markets."
+          },
+          {
+            "title": "Pure Meme, Zero Bullshit",
+            "description": "Our value comes only from how loud, crazy, and big our community gets. No empty promises here."
+          }
+        ]
+      },
+      "shitonomics": {
+        "title": "SHITONOMICS: AS SIMPLE AS TAKING A DUMP",
+        "stats": [
+          {
+            "label": "Total Supply",
+            "value": "1,000,000,000 $SHEAD",
+            "description": "A nice, round number for our smooth brains."
+          },
+          {
+            "label": "Transaction Tax",
+            "value": "0% Buy / 0% Sell",
+            "description": "Being a ShitHead should be free. Get in and out as you please."
+          },
+          {
+            "label": "Liquidity (LP)",
+            "value": "100% Burned",
+            "description": "The keys are thrown into the deepest septic tank. This coin is fully community-owned."
+          },
+          {
+            "label": "Contract Ownership",
+            "value": "Renounced",
+            "description": "No one can change the rules. Not even its creator."
+          }
+        ],
+        "slogan": "A truly liquid investment... literally."
+      },
+      "shitmap": {
+        "title": "THE SHITMAP: OUR MASTER PLAN",
+        "phases": [
+          {
+            "phaseNumber": 1,
+            "title": "The Flush",
+            "tasks": [
+              "Launch on Raydium/Uniswap.",
+              "Build the Telegram & Twitter communities until they're full of ShitHeads.",
+              "Get trending on DEXTools & Birdeye.",
+              "Make the world aware of our existence."
+            ]
+          },
+          {
+            "phaseNumber": 2,
+            "title": "The Clog",
+            "tasks": [
+              "CoinGecko & CoinMarketCap Listings.",
+              "Viral meme campaign: 'Tag a friend who's a ShitHead.'",
+              "Reach 10,000+ Holders (True ShitHeads).",
+              "Partner with the most degenerate crypto influencers."
+            ]
+          },
+          {
+            "phaseNumber": 3,
+            "title": "The Overflow",
+            "tasks": [
+              "Listings on mid-tier centralized exchanges (CEX).",
+              "Official merchandise: 'ShitHead' hats and the X-ray T-shirt.",
+              "Charity donation for clean water sanitation (the irony is delicious).",
+              "Make the hashtag #WeAreAllShitHeads trend worldwide."
+            ]
+          },
+          {
+            "phaseNumber": 4,
+            "title": "The Septic Tank of Immortality",
+            "tasks": [
+              "Reach a completely absurd market cap.",
+              "Buy a small private island and officially name it 'ShitHead Isle.'",
+              "We all retire as rich ShitHeads, laughing at the 'smart investors.'"
+            ]
+          }
+        ]
+      },
+      "howToBuy": {
+        "title": "HOW TO BECOME A SHITHEAD",
+        "steps": [
+          {
+            "step": 1,
+            "title": "GET A WALLET",
+            "description": "Download Phantom, Solflare, or another Solana-based wallet. Fund it with some SOL."
+          },
+          {
+            "step": 2,
+            "title": "GO TO A DEX",
+            "description": "Open Raydium or Jupiter. Connect your wallet."
+          },
+          {
+            "step": 3,
+            "title": "FIND US",
+            "description": "Copy the official $SHEAD contract address below and paste it into the destination token field."
+          },
+          {
+            "step": 4,
+            "title": "SWAP & BECOME A SHITHEAD",
+            "description": "Swap your SOL for $SHEAD. Confirm the transaction and congratulations! You are now officially a ShitHead."
+          }
+        ],
+        "contractAddress": "PASTE_YOUR_CONTRACT_ADDRESS_HERE",
+        "closingText": "Congratulations on making the worst (or best?) financial decision of your life."
+      },
+      "community": {
+        "title": "A PILE OF SHIT IS STRONGER TOGETHER",
+        "paragraph": "Don't be a lonely ShitHead. Join thousands of others in our channels.",
+        "socials": [
+          {
+            "platform": "Telegram",
+            "link": "https://telegram.org/your_group_link"
+          },
+          {
+            "platform": "Twitter / X",
+            "link": "https://twitter.com/your_handle"
+          },
+          {
+            "platform": "Reddit",
+            "link": "https://reddit.com/r/your_subreddit"
+          }
+        ]
+      },
+      "footer": {
+        "disclaimer": "Warning: This is a memecoin. This is not financial advice. Its value can go to zero in a heartbeat. Only invest money you’re willing to flush down the toilet and wave goodbye to. By purchasing $SHEAD, you are knowingly and proudly admitting that you are, in fact, a ShitHead."
+      }
+    }
+  }
+}
