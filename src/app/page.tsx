@@ -5,13 +5,19 @@ import Image from "next/image"; // Import Image component
 export default function Home() {
   const { sections } = websiteContent.website;
 
-  // Filter out "READ OUR SHITPAPER" and "Join Reddit" buttons from Hero section
-  const filteredCtaButtons = sections.hero.ctaButtons.filter(
-    (button: any) =>
-      button.text !== "READ OUR SHITPAPER" && button.text !== "Join Reddit"
-  );
+  // Define the CTA buttons for the Hero section
+  const heroCtaButtons = [
+    // Find the original "Buy Shithead" button or create a default one
+    sections.hero.ctaButtons.find((button: any) => button.text === "Buy Shithead") || {
+      text: "Buy Shithead",
+      link: "#", // Fallback link if not found
+      primary: true,
+    },
+    { text: "Join Telegram", link: "https://t.me/goldenshitheads", primary: false },
+    { text: "Join Twitter/X", link: "https://x.com/shithead_1111", primary: false },
+  ].filter(Boolean); // Filter out any null/undefined entries
 
-  // Update social links and filter out Reddit
+  // Update social links and filter out Reddit for the Community section
   const updatedSocials = sections.community.socials
     .filter((social: any) => social.platform !== "Reddit") // Filter out Reddit platform
     .map((social: any) => {
@@ -49,7 +55,7 @@ export default function Home() {
             {sections.hero.paragraph}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {filteredCtaButtons.map((button: any, index: number) => (
+            {heroCtaButtons.map((button: any, index: number) => (
               <a
                 key={index}
                 href={button.link}
