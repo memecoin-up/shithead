@@ -55,14 +55,14 @@ const ShitParticleBackground = () => {
             enable: false, // No lines between particles
           },
           move: {
-            direction: "none",
+            direction: "bottom", // Mengubah arah gerakan menjadi dari atas ke bawah
             enable: true,
             outModes: {
-              default: "bounce",
+              default: "out", // Partikel akan keluar dari layar setelah mencapai batas bawah
             },
-            random: true,
-            speed: 1,
-            straight: false,
+            random: false, // Gerakan tidak acak
+            speed: 2, // Meningkatkan kecepatan sedikit
+            straight: true, // Gerakan lurus ke bawah
           },
           number: {
             density: {
