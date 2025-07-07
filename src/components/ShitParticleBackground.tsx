@@ -10,7 +10,7 @@ const ShitParticleBackground = () => {
   }, []);
 
   const particlesLoaded = useCallback(async (container: any) => {
-    console.log("Particles container loaded:", container); // Tambahkan log ini
+    console.log("Particles container loaded:", container); // Tetap log ini
   }, []);
 
   return (
@@ -21,7 +21,7 @@ const ShitParticleBackground = () => {
       options={{
         background: {
           color: {
-            value: "transparent", // Make background transparent so it overlays
+            value: "#FF0000", // SEMENTARA: Mengubah latar belakang kanvas menjadi merah untuk debugging
           },
         },
         fpsLimit: 60,
@@ -49,19 +49,19 @@ const ShitParticleBackground = () => {
         },
         particles: {
           color: {
-            value: "#FFFFFF", // Mengubah warna partikel menjadi putih
+            value: "#FFFFFF", // Warna partikel (emoji)
           },
           links: {
             enable: false, // No lines between particles
           },
           move: {
-            direction: "bottom", // Mengubah arah gerakan menjadi dari atas ke bawah
+            direction: "bottom", // Gerakan dari atas ke bawah
             enable: true,
             outModes: {
-              default: "out", // Partikel akan keluar dari layar setelah mencapai batas bawah
+              default: "out", // Partikel akan keluar dari layar
             },
-            random: false, // Gerakan tidak acak
-            speed: 3, // Meningkatkan kecepatan sedikit
+            random: false, // Gerakan lurus
+            speed: 5, // Meningkatkan kecepatan
             straight: true, // Gerakan lurus ke bawah
           },
           number: {
@@ -69,27 +69,27 @@ const ShitParticleBackground = () => {
               enable: true,
               area: 800,
             },
-            value: 50, // Meningkatkan jumlah partikel
+            value: 100, // Meningkatkan jumlah partikel secara drastis
           },
           opacity: {
-            value: 1, // Meningkatkan opasitas menjadi penuh
+            value: 1, // Opasitas penuh
           },
           shape: {
-            type: "circle", // Mengubah bentuk menjadi lingkaran untuk debugging
-            // character: { // Komentar ini untuk sementara
-            //   value: ["💩"],
-            //   font: "Verdana",
-            //   style: "",
-            //   weight: "400",
-            // },
+            type: "character",
+            character: {
+              value: ["💩"], // Emoji kotoran
+              font: "Verdana", // Font umum yang mendukung emoji
+              style: "",
+              weight: "400",
+            },
           },
           size: {
-            value: { min: 10, max: 20 }, // Mengatur ukuran lingkaran
+            value: { min: 30, max: 60 }, // Meningkatkan ukuran emoji secara drastis
           },
         },
         detectRetina: true,
       }}
-      className="absolute inset-0 z-0" // Position absolutely, behind content
+      className="absolute inset-0 z-0" // Posisi absolut, di belakang konten
     />
   );
 };
