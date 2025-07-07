@@ -7,8 +7,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   // Add basePath and assetPrefix for GitHub Pages deployment
-  basePath: process.env.NODE_ENV === "production" ? "/shithead" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/shithead" : "",
+  basePath: "",
+  assetPrefix: "",
   webpack: (config) => {
     if (process.env.NODE_ENV === "development") {
       config.module.rules.push({
