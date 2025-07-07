@@ -71,6 +71,18 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Banner Section */}
+        <section id="banner" className="w-full px-4 py-10">
+          <div className="relative w-full max-w-6xl mx-auto aspect-[3/1] overflow-hidden rounded-lg shadow-lg">
+            <Image
+              src="/banner.png" // Ganti dengan path gambar banner Anda
+              alt="Website Banner"
+              fill // Mengisi container parent
+              className="object-cover" // Memastikan gambar menutupi area tanpa terdistorsi
+            />
+          </div>
+        </section>
+
         {/* Philosophy Section */}
         <section id="philosophy" className="w-full py-20 px-4 bg-card text-card-foreground">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
